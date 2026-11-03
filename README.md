@@ -1,7 +1,7 @@
 # ENVITY Crosshair — Fabric 1.21.11
 
 An original client-side implementation of three crosshair features:
-- A configurable colored bracket indicator when your targeted player is within attack reach.
+- Four disconnected corner marks around your crosshair when your targeted player is within attack reach.
 - Physical framebuffer centering for the vanilla crosshair, including odd window sizes and GUI scaling.
 - Crosshair visibility in rear/front third-person (F5), controlled independently.
 
@@ -10,14 +10,16 @@ Resource-pack crosshair textures remain supported. Other crosshair-rendering mod
 
 ## Install
 1. Use Minecraft **1.21.11** with Fabric Loader **0.18.4 or later**, Java 21, and Fabric API for 1.21.11.
-2. Put the included envity-crosshair-1.0.0.jar in your instance's mods folder.
+2. Download **envity-crosshair-1.0.1.jar** from [Releases](https://github.com/EnvityXD/crosshair-all/releases/latest) and put it in your instance's mods folder.
 3. Remove/disable Crosshair Indicator, Centered Crosshair, and F5 Crosshair to avoid overlapping changes.
 4. Start Minecraft and press **Right Shift** for settings.
 Do not install this client-only mod on a dedicated server.
 
 ## Settings
 Separate toggles: master enable, indicator, centering, F5 rear, F5 front, and players-only targeting.
-Click the indicator color button to cycle green/red/cyan/yellow/white; a swatch shows the color.
+The indicator defaults to the vanilla inverted-color style, matching the four-corner reference.
+Click its color button to cycle white (vanilla inversion), green, red, cyan and yellow; a swatch shows the selection.
+When upgrading from 1.0.0, the old green default migrates to white; other colors and feature toggles are retained.
 Click indicator size to cycle 4–16 GUI pixels.
 Controls → Key Binds allows remapping the settings shortcut and assigning a master toggle (unbound by default).
 Settings persist immediately in config/envity-crosshair.json. With Minecraft closed, advanced users may edit
@@ -33,7 +35,7 @@ Front-view crosshairs are visual aids and do not change the player's attack dire
 Use JDK 21:
 - Windows: gradlew.bat build
 - Linux/macOS: ./gradlew build
-Output: build/libs/envity-crosshair-1.0.0.jar
+Output: build/libs/envity-crosshair-1.0.1.jar
 Pinned dependencies are in build.gradle.
 
 ## Verification
@@ -55,3 +57,22 @@ https://modrinth.com/project/xUTHly0N
 https://modrinth.com/project/EsJaRa1U
 
 Author: ENVITY
+
+## File guide
+
+GitHub's file listing shows the latest **commit message**, not a per-file description.
+The complete file-by-file guide is in [docs/FILES.md](docs/FILES.md).
+
+| Area | Purpose |
+| --- | --- |
+| `src/main/java/dev/envity/crosshair` | Client setup, saved configuration and in-game settings screen |
+| `src/main/java/dev/envity/crosshair/mixin` | Hooks into the vanilla HUD for F5, centering and reach display |
+| `src/main/resources` | Mod metadata, mixin registration, translations and corner sprite |
+| `gradle/wrapper` | Pinned Gradle launcher for reproducible builds |
+| `docs` | File reference and release history |
+
+## Releases
+
+**1.0.1** fixes the indicator's appearance: four separate corner marks replace the old side brackets.
+White uses the vanilla crosshair blending pipeline; optional colored indicators remain configurable.
+See [CHANGELOG.md](CHANGELOG.md) for changes and installation details.

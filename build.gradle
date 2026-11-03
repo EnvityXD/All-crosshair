@@ -1,5 +1,6 @@
+// Fabric 1.21.11 build: Java 21, pinned mappings, loader and Fabric API.
 plugins { id 'fabric-loom' version '1.14.10' }
-version = '1.0.0'
+version = '1.0.1'
 group = 'dev.envity'
 repositories { mavenCentral() }
 dependencies {
