@@ -22,7 +22,9 @@ Every tracked file and its purpose. Generated Gradle Wrapper files are kept inta
 | `src/main/resources/fabric.mod.json` | Fabric metadata: mod ID, name, author, version, client entry point and dependency requirements. |
 | `src/main/resources/all_crosshair.mixins.json` | Registers the required client HUD mixin and Java 21 compatibility. |
 | `src/main/resources/assets/all_crosshair/lang/en_us.json` | English label for the All-crosshair key-binding category. |
-| `src/main/resources/assets/all_crosshair/textures/gui/sprites/hud/indicator_corners.png` | Original transparent 15×15 sprite with four separate L-shaped corners; overlays the existing crosshair only for a valid target. |
+| `src/main/resources/assets/all_crosshair/textures/gui/sprites/hud/indicator_corners.png` | Exact CC0-licensed 15×15 Crosshair Indicator sprite with the original corner geometry; overlays the crosshair for a valid target. |
 | `docs/FILES.md` | This complete file-by-file reference. |
 | `src/main/java/dev/envity/allcrosshair/compat/AllCrosshairModMenu.java` | Optional Mod Menu API entry point opening SettingsScreen with the correct parent. |
 | `src/main/resources/assets/all_crosshair/icon.png` | Rough pencil-sketch crosshair logo, shown in Mod Menu and the README. |
+| `THIRD_PARTY_NOTICES.md` | Upstream sprite source, creators and licensing details. |
+| `licenses/Crosshair-Indicator-CC0.txt` | Complete CC0-1.0 license retained from the upstream artifact. |
