@@ -32,6 +32,7 @@ Click indicator size to cycle 4–16 GUI pixels.
 Controls → Key Binds allows remapping the settings shortcut and assigning a master toggle (unbound by default).
 Settings persist immediately in config/all-crosshair.json. With Minecraft closed, advanced users may edit
 color (signed decimal ARGB) and radius in that file.
+-# IF YOU WANT ORGINIAL 1:1 CROSSHAIR INDICATOR SIZE SHOULD BE 7
 
 The indicator uses vanilla targeting and the player's current entity interaction range, checks line of sight,
 and does not wait for a full attack cooldown. It does not extend reach or attack automatically.
