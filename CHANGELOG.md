@@ -1,5 +1,7 @@
 # Changelog
 
+Release history for All-crosshair, including fixes and upgrade instructions.
+
 ## 1.1.0 — 2026-11-03
 
 - Rebrand display name, artifact, mod ID, resource namespace and settings to All-crosshair.
