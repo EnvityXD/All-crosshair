@@ -1,0 +1,1 @@
+{"required":true,"package":"dev.envity.allcrosshair.mixin","compatibilityLevel":"JAVA_21","client":["HudMixin"],"injectors":{"defaultRequire":1}}

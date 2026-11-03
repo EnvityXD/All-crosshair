@@ -1,8 +1,37 @@
 {
- "schemaVersion":1,"id":"envity_crosshair","version":"${version}",
- "name":"ENVITY Crosshair","description":"Reach indicator, centered crosshair and F5 crosshair with independent settings.",
- "authors":["ENVITY"],"license":"MIT","environment":"client",
- "entrypoints":{"client":["dev.envity.crosshair.CrosshairClient"]},
- "mixins":["envity_crosshair.mixins.json"],
- "depends":{"fabricloader":">=0.18.4","minecraft":"1.21.11","java":">=21","fabric-api":"*"}
+  "schemaVersion": 1,
+  "id": "all_crosshair",
+  "version": "${version}",
+  "name": "All-crosshair",
+  "description": "All-in-one client crosshair controls: four-corner reach indicator, precise centering and separate front/rear F5 toggles. Configure through Mod Menu or Right Shift.",
+  "authors": [
+    "ENVITY"
+  ],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "dev.envity.allcrosshair.CrosshairClient"
+    ],
+    "modmenu": [
+      "dev.envity.allcrosshair.compat.AllCrosshairModMenu"
+    ]
+  },
+  "mixins": [
+    "all_crosshair.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "icon": "assets/all_crosshair/icon.png",
+  "suggests": {
+    "modmenu": ">=17.0.0"
+  },
+  "contact": {
+    "sources": "https://github.com/EnvityXD/All-crosshair",
+    "issues": "https://github.com/EnvityXD/All-crosshair/issues"
+  }
 }

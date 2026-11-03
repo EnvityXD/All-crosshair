@@ -1,4 +1,4 @@
-package dev.envity.crosshair;
+package dev.envity.allcrosshair;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.DrawContext;
@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 /** Provides in-game toggles and persistent indicator color and size controls. */
 public final class SettingsScreen extends Screen {
     private final Screen parent;
-    public SettingsScreen(Screen parent) { super(Text.literal("ENVITY Crosshair")); this.parent = parent; }
+    public SettingsScreen(Screen parent) { super(Text.literal("All-crosshair")); this.parent = parent; }
     private void toggle(String label, int y, BooleanSupplier get, Consumer<Boolean> set) {
         addDrawableChild(ButtonWidget.builder(Text.literal(label + ": " + (get.getAsBoolean() ? "ON" : "OFF")), b -> {
             set.accept(!get.getAsBoolean()); CrosshairClient.config.save();

@@ -1,13 +1,18 @@
 // Fabric 1.21.11 build: Java 21, pinned mappings, loader and Fabric API.
 plugins { id 'fabric-loom' version '1.14.10' }
-version = '1.0.1'
+version = '1.1.0'
 group = 'dev.envity'
-repositories { mavenCentral() }
+repositories {
+ mavenCentral()
+ maven { url = 'https://maven.terraformersmc.com/releases/' }
+}
 dependencies {
  minecraft 'com.mojang:minecraft:1.21.11'
  mappings 'net.fabricmc:yarn:1.21.11+build.6:v2'
  modImplementation 'net.fabricmc:fabric-loader:0.18.4'
  modImplementation 'net.fabricmc.fabric-api:fabric-api:0.141.6+1.21.11'
+ // Optional integration: this API is not bundled and Mod Menu is not required to launch.
+ modCompileOnly 'com.terraformersmc:modmenu:17.0.1'
 }
 java { toolchain { languageVersion = JavaLanguageVersion.of(21) }; withSourcesJar() }
 processResources { inputs.property 'version', project.version; filesMatching('fabric.mod.json') { expand 'version': project.version } }

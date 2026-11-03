@@ -1,4 +1,4 @@
-package dev.envity.crosshair;
+package dev.envity.allcrosshair;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
@@ -19,8 +19,14 @@ public final class Config {
     public int color = 0xFFFFFFFF;
     public int radius = 7;
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final Path FILE = FabricLoader.getInstance().getConfigDir().resolve("envity-crosshair.json");
+    private static final Path FILE = FabricLoader.getInstance().getConfigDir().resolve("all-crosshair.json");
     public static Config load() {
+        // Keep existing settings after the mod ID and config filename rebrand.
+        Path legacy = FILE.resolveSibling("envity-crosshair.json");
+        if (!Files.exists(FILE) && Files.exists(legacy)) {
+            try { Files.copy(legacy, FILE); }
+            catch (IOException e) { LoggerFactory.getLogger("all_crosshair").warn("Cannot migrate legacy settings", e); }
+        }
         try {
             if (Files.exists(FILE)) {
                 var json = JsonParser.parseString(Files.readString(FILE)).getAsJsonObject();
@@ -31,11 +37,11 @@ public final class Config {
                 }
                 if (config != null) { config.radius = Math.clamp(config.radius, 4, 16); return config; }
             }
-        } catch (IOException | RuntimeException e) { LoggerFactory.getLogger("envity_crosshair").warn("Cannot read settings; using defaults", e); }
+        } catch (IOException | RuntimeException e) { LoggerFactory.getLogger("all_crosshair").warn("Cannot read settings; using defaults", e); }
         return new Config();
     }
     public void save() {
         try { Files.createDirectories(FILE.getParent()); Files.writeString(FILE, GSON.toJson(this)); }
-        catch (IOException e) { LoggerFactory.getLogger("envity_crosshair").error("Cannot save settings", e); }
+        catch (IOException e) { LoggerFactory.getLogger("all_crosshair").error("Cannot save settings", e); }
     }
 }

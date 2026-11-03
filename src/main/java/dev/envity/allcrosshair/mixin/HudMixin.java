@@ -1,5 +1,5 @@
-package dev.envity.crosshair.mixin;
-import dev.envity.crosshair.CrosshairClient;
+package dev.envity.allcrosshair.mixin;
+import dev.envity.allcrosshair.CrosshairClient;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
@@ -20,12 +20,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(InGameHud.class)
 public abstract class HudMixin {
     @Redirect(method="renderCrosshair", at=@At(value="INVOKE",target="Lnet/minecraft/client/option/Perspective;isFirstPerson()Z"))
-    private boolean envity$perspective(Perspective perspective) {
+    private boolean allcrosshair$perspective(Perspective perspective) {
         var c=CrosshairClient.config;
         return perspective.isFirstPerson() || c.enabled && (perspective==Perspective.THIRD_PERSON_BACK ? c.rearView : c.frontView);
     }
     @Inject(method="renderCrosshair",at=@At("HEAD"))
-    private void envity$center(DrawContext ctx, RenderTickCounter tick, CallbackInfo ci) {
+    private void allcrosshair$center(DrawContext ctx, RenderTickCounter tick, CallbackInfo ci) {
         ctx.getMatrices().pushMatrix();
         if(CrosshairClient.config.enabled && CrosshairClient.config.centered) {
             // Align to the physical framebuffer center, including non-divisible GUI scales.
@@ -37,7 +37,7 @@ public abstract class HudMixin {
         }
     }
     @Inject(method="renderCrosshair",at=@At("RETURN"))
-    private void envity$indicator(DrawContext ctx, RenderTickCounter tick, CallbackInfo ci) {
+    private void allcrosshair$indicator(DrawContext ctx, RenderTickCounter tick, CallbackInfo ci) {
         try {
         var c=CrosshairClient.config; var mc=MinecraftClient.getInstance();
         if(!c.enabled || !c.indicator || mc.player==null || mc.world==null || mc.player.isSpectator()) return;
@@ -56,7 +56,7 @@ public abstract class HudMixin {
         // Four disconnected L-shaped corners; use vanilla inverse-color blending by default.
         // Keep the original crosshair and cooldown bar untouched underneath.
         ctx.drawGuiTexture(col == 0xFFFFFFFF ? RenderPipelines.CROSSHAIR : RenderPipelines.GUI_TEXTURED,
-                Identifier.of("envity_crosshair", "hud/indicator_corners"),
+                Identifier.of("all_crosshair", "hud/indicator_corners"),
                 x-r, y-r, r*2+1, r*2+1, col);
         } finally { ctx.getMatrices().popMatrix(); }
     }
