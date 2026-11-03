@@ -1,3 +1,4 @@
+# Local Gradle cache, compiled artifacts, test runs and IDE files.
 .gradle/
 build/
 run/
