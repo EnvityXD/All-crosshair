@@ -1,5 +1,7 @@
 # All-crosshair — Fabric 1.21.11
 
+Client-side crosshair controls, with optional Mod Menu integration. By ENVITY.
+
 ![All-crosshair sketch logo](src/main/resources/assets/all_crosshair/icon.png)
 
 An original client-side implementation of three crosshair features:
