@@ -1,4 +1,4 @@
-# File reference
+# All-crosshair file reference
 
 Every tracked file and its purpose. Generated Gradle Wrapper files are kept intact.
 
