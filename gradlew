@@ -1,4 +1,5 @@
 #!/bin/sh
+# All-crosshair build launcher for Linux and macOS.
 
 #
 # Copyright © 2015 the original authors.
