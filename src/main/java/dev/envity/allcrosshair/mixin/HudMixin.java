@@ -13,12 +13,15 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.client.gl.RenderPipelines;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /** Preserves vanilla HUD rendering while adding centering, F5 visibility and a reach indicator. */
 @Mixin(InGameHud.class)
 public abstract class HudMixin {
+    @Unique private static final Identifier allcrosshair$indicatorTexture = Identifier.of("all_crosshair", "hud/indicator_corners");
+    @Unique private boolean allcrosshair$matrixPushed;
     @Redirect(method="renderCrosshair", at=@At(value="INVOKE",target="Lnet/minecraft/client/option/Perspective;isFirstPerson()Z"))
     private boolean allcrosshair$perspective(Perspective perspective) {
         var c=CrosshairClient.config;
@@ -26,8 +29,9 @@ public abstract class HudMixin {
     }
     @Inject(method="renderCrosshair",at=@At("HEAD"))
     private void allcrosshair$center(DrawContext ctx, RenderTickCounter tick, CallbackInfo ci) {
-        ctx.getMatrices().pushMatrix();
-        if(CrosshairClient.config.enabled && CrosshairClient.config.centered) {
+        allcrosshair$matrixPushed = CrosshairClient.config.enabled && CrosshairClient.config.centered;
+        if(allcrosshair$matrixPushed) {
+            ctx.getMatrices().pushMatrix();
             // Align to the physical framebuffer center, including non-divisible GUI scales.
             var window=MinecraftClient.getInstance().getWindow();
             double scale=window.getScaleFactor();
@@ -50,14 +54,22 @@ public abstract class HudMixin {
         // Use the player's eye and actual interaction range, never camera distance or an expanded reach.
         var attackRange=mc.player.getActiveOrMainHandStack().get(DataComponentTypes.ATTACK_RANGE);
         if(attackRange!=null) { if(!attackRange.isWithinRange(mc.player,hit.getPos())) return; }
-        else if(mc.player.getEyePos().squaredDistanceTo(hit.getPos()) > (mc.player.getEntityInteractionRange()*mc.player.getEntityInteractionRange())) return;
+        else {
+            double reach = mc.player.getEntityInteractionRange();
+            if(mc.player.getEyePos().squaredDistanceTo(hit.getPos()) > reach * reach) return;
+        }
         if(!mc.player.canSee(entity)) return;
         int x=(ctx.getScaledWindowWidth()-1)/2, y=(ctx.getScaledWindowHeight()-1)/2, r=c.radius, col=c.color|0xFF000000;
         // Four disconnected L-shaped corners; use vanilla inverse-color blending by default.
         // Keep the original crosshair and cooldown bar untouched underneath.
         ctx.drawGuiTexture(col == 0xFFFFFFFF ? RenderPipelines.CROSSHAIR : RenderPipelines.GUI_TEXTURED,
-                Identifier.of("all_crosshair", "hud/indicator_corners"),
+                allcrosshair$indicatorTexture,
                 x-r, y-r, r*2+1, r*2+1, col);
-        } finally { ctx.getMatrices().popMatrix(); }
+        } finally {
+            if (allcrosshair$matrixPushed) {
+                ctx.getMatrices().popMatrix();
+                allcrosshair$matrixPushed = false;
+            }
+        }
     }
 }

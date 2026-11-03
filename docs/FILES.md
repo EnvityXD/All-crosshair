@@ -5,7 +5,7 @@ Every tracked file and its purpose. Generated Gradle Wrapper files are kept inta
 | File | Description |
 | --- | --- |
 | `.gitignore` | Excludes Gradle caches, compiled output, run directories and IDE-local files from commits. |
-| `LICENSE` | MIT license with ENVITY attribution for this original mod. |
+| `LICENSE` | MIT license with Envity attribution for this original mod. |
 | `README.md` | Feature overview, installation instructions, settings, build commands and verification limits. |
 | `CHANGELOG.md` | Versioned release history and upgrade notes. |
 | `build.gradle` | Pins Fabric Loom, Minecraft 1.21.11, Yarn mappings, Fabric Loader and Fabric API; builds/remaps the mod and sources JARs. |
@@ -17,7 +17,7 @@ Every tracked file and its purpose. Generated Gradle Wrapper files are kept inta
 | `gradle/wrapper/gradle-wrapper.properties` | Pins Gradle 9.2.1 and configures its distribution download. |
 | `src/main/java/dev/envity/allcrosshair/Config.java` | Defines defaults, validates size, migrates the old appearance and loads/saves config/all-crosshair.json. |
 | `src/main/java/dev/envity/allcrosshair/CrosshairClient.java` | Fabric client entry point. Registers Right Shift settings and the optional master-toggle key binding. |
-| `src/main/java/dev/envity/allcrosshair/SettingsScreen.java` | In-game settings UI with independent feature switches, color selection, size control and immediate persistence. |
+| `src/main/java/dev/envity/allcrosshair/SettingsScreen.java` | In-game settings UI with independent feature switches, color selection, size control and immediate persistence on changes. |
 | `src/main/java/dev/envity/allcrosshair/mixin/HudMixin.java` | Keeps vanilla HUD behavior while correcting alignment, permitting F5 rendering and checking reach/visibility before drawing the indicator. |
 | `src/main/resources/fabric.mod.json` | Fabric metadata: mod ID, name, author, version, client entry point and dependency requirements. |
 | `src/main/resources/all_crosshair.mixins.json` | Registers the required client HUD mixin and Java 21 compatibility. |

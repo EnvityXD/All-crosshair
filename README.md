@@ -1,6 +1,9 @@
 # All-crosshair — Fabric 1.21.11
 
-Client-side crosshair controls, with optional Mod Menu integration. By ENVITY.
+> **Disclosure:** This was made by AI, with human code review.
+> This is the maintainer’s authorship statement; it is not an independent audit or a guarantee of correctness.
+
+Client-side crosshair controls, with optional Mod Menu integration. By Envity and AI.
 
 ![All-crosshair sketch logo](src/main/resources/assets/all_crosshair/icon.png)
 
@@ -14,10 +17,10 @@ Resource-pack crosshair textures remain supported. Other crosshair-rendering mod
 
 ## Install
 1. Use Minecraft **1.21.11** with Fabric Loader **0.18.4 or later**, Java 21, and Fabric API for 1.21.11.
-2. Download **all-crosshair-1.1.1.jar** from [Releases](https://github.com/EnvityXD/All-crosshair/releases/latest) and put it in your instance's mods folder.
+2. Download the latest published JAR from [Releases](https://github.com/EnvityXD/All-crosshair/releases/latest) and put it in your instance's mods folder.
 3. Remove/disable Crosshair Indicator, Centered Crosshair, and F5 Crosshair to avoid overlapping changes.
 4. Open **Mods → All-crosshair → Configure** with Mod Menu 17.x installed, or press **Right Shift** in-game. Mod Menu is optional.
-5. Remove the previous ENVITY Crosshair JAR when upgrading. Settings from `config/envity-crosshair.json` automatically copy to `config/all-crosshair.json` on first launch.
+5. Remove the previous Envity Crosshair JAR when upgrading. Settings from `config/envity-crosshair.json` automatically copy to `config/all-crosshair.json` on first launch.
 Do not install this client-only mod on a dedicated server.
 
 ## Settings
@@ -40,7 +43,7 @@ Front-view crosshairs are visual aids and do not change the player's attack dire
 Use JDK 21:
 - Windows: gradlew.bat build
 - Linux/macOS: ./gradlew build
-Output: build/libs/all-crosshair-1.1.1.jar
+Output: build/libs/all-crosshair-1.1.2.jar
 Pinned dependencies are in build.gradle.
 
 ## Verification
@@ -62,7 +65,7 @@ https://modrinth.com/mod/crosshair-indicator
 https://modrinth.com/project/xUTHly0N
 https://modrinth.com/project/EsJaRa1U
 
-Author: ENVITY
+Authors: Envity and AI
 
 ## File guide
 

@@ -5,7 +5,8 @@
   "name": "All-crosshair",
   "description": "All-in-one client crosshair controls: four-corner reach indicator, precise centering and separate front/rear F5 toggles. Configure through Mod Menu or Right Shift.",
   "authors": [
-    "ENVITY"
+    "Envity",
+    "AI"
   ],
   "license": "MIT",
   "environment": "client",

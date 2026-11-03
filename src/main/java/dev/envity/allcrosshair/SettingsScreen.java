@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 
 /** Provides in-game toggles and persistent indicator color and size controls. */
 public final class SettingsScreen extends Screen {
+    private static final int[] COLORS = {0xFFFFFFFF,0xFF55FF55,0xFFFF5555,0xFF55FFFF,0xFFFFFF55};
     private final Screen parent;
     public SettingsScreen(Screen parent) { super(Text.literal("All-crosshair")); this.parent = parent; }
     private void toggle(String label, int y, BooleanSupplier get, Consumer<Boolean> set) {
@@ -28,9 +29,8 @@ public final class SettingsScreen extends Screen {
             c.radius = c.radius >= 16 ? 4 : c.radius+1; c.save(); b.setMessage(Text.literal("Indicator size: "+c.radius));
         }).dimensions(width/2-120,y+138,240,20).build());
         addDrawableChild(ButtonWidget.builder(Text.literal("Indicator color (click to cycle)"), b-> {
-            int[] colors={0xFFFFFFFF,0xFF55FF55,0xFFFF5555,0xFF55FFFF,0xFFFFFF55};
-            int next=0; for(int i=0;i<colors.length;i++) if(c.color==colors[i]) next=(i+1)%colors.length;
-            c.color=colors[next]; c.save();
+            int next=0; for(int i=0;i<COLORS.length;i++) if(c.color==COLORS[i]) next=(i+1)%COLORS.length;
+            c.color=COLORS[next]; c.save();
         }).dimensions(width/2-120,y+161,240,20).build());
         addDrawableChild(ButtonWidget.builder(Text.literal("Done"), b->close()).dimensions(width/2-120,y+184,240,20).build());
     }
@@ -39,5 +39,5 @@ public final class SettingsScreen extends Screen {
         ctx.drawCenteredTextWithShadow(textRenderer,title,width/2,12,0xFFFFFFFF);
         ctx.fill(width/2+125,height/2-5,width/2+135,height/2+5,CrosshairClient.config.color);
     }
-    @Override public void close() { CrosshairClient.config.save(); client.setScreen(parent); }
+    @Override public void close() { client.setScreen(parent); }
 }

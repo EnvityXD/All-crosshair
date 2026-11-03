@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.2
+- Reuse the HUD texture identifier and color palette; skip matrix pushes when centering is disabled.
+- Read interaction range once per check and avoid saving unchanged settings when closing the menu.
+- Credit Envity and AI, and add the maintainer-provided AI disclosure.
+- Preserve the exact indicator sprite and legacy config migration.
+
+
 ## 1.1.1 — 2026-11-03
 
 - Replace the approximation with Crosshair Indicator 1.0.3’s exact CC0-licensed 15×15 sprite.
@@ -18,7 +25,7 @@ Release history for All-crosshair, including fixes and upgrade instructions.
 - Keep Mod Menu optional: Right Shift still opens settings when it is absent.
 - Preserve existing configuration by migrating the old config filename.
 - Localize the key-binding names and category.
-- Author attribution remains ENVITY.
+- Author attribution remains Envity.
 
 
 ## 1.0.1 — 2026-11-03
