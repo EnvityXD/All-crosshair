@@ -1,4 +1,4 @@
-// Fabric 1.21.11 build: Java 21, pinned mappings, loader and Fabric API.
+// Build All-crosshair for Fabric 1.21.11 using Java 21 and pinned dependencies.
 plugins { id 'fabric-loom' version '1.14.10' }
 version = '1.1.0'
 group = 'dev.envity'
