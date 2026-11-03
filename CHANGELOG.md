@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.1 — 2026-11-03
+
+- Replace the approximation with Crosshair Indicator 1.0.3’s exact CC0-licensed 15×15 sprite.
+- Match the original two-pixel corner arms, spacing and CROSSHAIR blending.
+- Preserve independent toggles, custom colors/size, centering and Mod Menu integration.
+- Include upstream license and third-party attribution in the JAR.
+
+
 Release history for All-crosshair, including fixes and upgrade instructions.
 
 ## 1.1.0 — 2026-11-03
