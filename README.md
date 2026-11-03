@@ -5,7 +5,7 @@ Client-side crosshair controls, with optional Mod Menu integration. By ENVITY.
 ![All-crosshair sketch logo](src/main/resources/assets/all_crosshair/icon.png)
 
 An original client-side implementation of three crosshair features:
-- Four disconnected corner marks around your crosshair when your targeted player is within attack reach.
+- The exact Crosshair Indicator corner sprite around your crosshair when your targeted player is within attack reach.
 - Physical framebuffer centering for the vanilla crosshair, including odd window sizes and GUI scaling.
 - Crosshair visibility in rear/front third-person (F5), controlled independently.
 
@@ -14,7 +14,7 @@ Resource-pack crosshair textures remain supported. Other crosshair-rendering mod
 
 ## Install
 1. Use Minecraft **1.21.11** with Fabric Loader **0.18.4 or later**, Java 21, and Fabric API for 1.21.11.
-2. Download **all-crosshair-1.1.0.jar** from [Releases](https://github.com/EnvityXD/All-crosshair/releases/latest) and put it in your instance's mods folder.
+2. Download **all-crosshair-1.1.1.jar** from [Releases](https://github.com/EnvityXD/All-crosshair/releases/latest) and put it in your instance's mods folder.
 3. Remove/disable Crosshair Indicator, Centered Crosshair, and F5 Crosshair to avoid overlapping changes.
 4. Open **Mods → All-crosshair → Configure** with Mod Menu 17.x installed, or press **Right Shift** in-game. Mod Menu is optional.
 5. Remove the previous ENVITY Crosshair JAR when upgrading. Settings from `config/envity-crosshair.json` automatically copy to `config/all-crosshair.json` on first launch.
@@ -40,7 +40,7 @@ Front-view crosshairs are visual aids and do not change the player's attack dire
 Use JDK 21:
 - Windows: gradlew.bat build
 - Linux/macOS: ./gradlew build
-Output: build/libs/all-crosshair-1.1.0.jar
+Output: build/libs/all-crosshair-1.1.1.jar
 Pinned dependencies are in build.gradle.
 
 ## Verification
@@ -57,7 +57,7 @@ Recommended checks:
 - Check alongside Sodium and your usual HUD mods.
 
 ## References
-Feature inspirations, not bundled dependencies or copied mod code:
+Feature references:
 https://modrinth.com/mod/crosshair-indicator
 https://modrinth.com/project/xUTHly0N
 https://modrinth.com/project/EsJaRa1U
@@ -78,6 +78,8 @@ The complete file-by-file guide is in [docs/FILES.md](docs/FILES.md).
 | `docs` | File reference and release history |
 
 ## Releases
+
+**1.1.1** uses the original Crosshair Indicator sprite and native 15×15 placement. See [third-party notices](THIRD_PARTY_NOTICES.md) for its CC0 license.
 
 **1.1.0** rebrands the mod to All-crosshair, adds a sketch logo and proper Mod Menu configuration integration.
 
