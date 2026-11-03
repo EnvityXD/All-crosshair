@@ -1,2 +1,3 @@
+// All-crosshair project identity and Gradle plugin repositories.
 pluginManagement { repositories { maven { url = 'https://maven.fabricmc.net/' }; gradlePluginPortal(); mavenCentral() } }
 rootProject.name = 'all-crosshair'
