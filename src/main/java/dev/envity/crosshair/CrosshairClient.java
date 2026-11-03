@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
+/** Registers client initialization, the settings shortcut and the optional master-toggle key. */
 public final class CrosshairClient implements ClientModInitializer {
     public static Config config = Config.load();
     @Override public void onInitializeClient() {

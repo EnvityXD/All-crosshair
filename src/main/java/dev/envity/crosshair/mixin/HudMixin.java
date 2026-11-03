@@ -10,10 +10,13 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.client.gui.hud.debug.DebugHudEntries;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.hit.EntityHitResult;
+import net.minecraft.util.Identifier;
+import net.minecraft.client.gl.RenderPipelines;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+/** Preserves vanilla HUD rendering while adding centering, F5 visibility and a reach indicator. */
 @Mixin(InGameHud.class)
 public abstract class HudMixin {
     @Redirect(method="renderCrosshair", at=@At(value="INVOKE",target="Lnet/minecraft/client/option/Perspective;isFirstPerson()Z"))
@@ -50,9 +53,11 @@ public abstract class HudMixin {
         else if(mc.player.getEyePos().squaredDistanceTo(hit.getPos()) > (mc.player.getEntityInteractionRange()*mc.player.getEntityInteractionRange())) return;
         if(!mc.player.canSee(entity)) return;
         int x=(ctx.getScaledWindowWidth()-1)/2, y=(ctx.getScaledWindowHeight()-1)/2, r=c.radius, col=c.color|0xFF000000;
-        ctx.fill(x-r,y-3,x-r+1,y+4,col); ctx.fill(x+r,y-3,x+r+1,y+4,col);
-        ctx.fill(x-r,y-3,x-r+3,y-2,col); ctx.fill(x-r,y+3,x-r+3,y+4,col);
-        ctx.fill(x+r-2,y-3,x+r+1,y-2,col); ctx.fill(x+r-2,y+3,x+r+1,y+4,col);
+        // Four disconnected L-shaped corners; use vanilla inverse-color blending by default.
+        // Keep the original crosshair and cooldown bar untouched underneath.
+        ctx.drawGuiTexture(col == 0xFFFFFFFF ? RenderPipelines.CROSSHAIR : RenderPipelines.GUI_TEXTURED,
+                Identifier.of("envity_crosshair", "hud/indicator_corners"),
+                x-r, y-r, r*2+1, r*2+1, col);
         } finally { ctx.getMatrices().popMatrix(); }
     }
 }
